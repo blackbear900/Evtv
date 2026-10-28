@@ -1,0 +1,22 @@
+name: EV TV
+version: "2.2.1-1"
+slug: evtv
+description: IPTV player for your EV's web browser (built on NodeCast TV), with a free private Tailscale address
+url: https://github.com/technomancer702/nodecast-tv
+arch:
+  - amd64
+  - aarch64
+init: false
+startup: application
+boot: auto
+ports:
+  3000/tcp: 3000
+ports_description:
+  3000/tcp: NodeCast TV on your home network
+webui: http://[HOST]:[PORT:3000]
+options:
+  tailscale_funnel: true
+  tailscale_name: evtv
+schema:
+  tailscale_funnel: bool
+  tailscale_name: str
