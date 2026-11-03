@@ -12,8 +12,14 @@ computer, so `http://` channels play on secure `https://` pages.
    The public address stays off until this account exists, so nobody else can claim it.
 4. Back in the **Log** tab: if a link to allow "Funnel" appears, open it and allow it.
 5. The log then shows **Ready! Open this in the Tesla: https://evtv.….ts.net**.
-6. In NodeCast, add your IPTV details, then turn on
-   **Settings → Transcoding → Network → Force Backend Proxy**.
+6. In NodeCast, add your IPTV details, then in **Settings → Transcoding**:
+   - **Network → Force Backend Proxy**: on
+   - **Stream Processing → Auto Transcode (Smart)**: off
+   - **Stream Processing → Force Audio Transcode**: on
+
+   (Most IPTV channels come as raw `.ts` video, which browsers can't play. With these settings EV TV turns
+   them into web video using a single connection to your IPTV service, which also suits plans that allow
+   only one stream at a time, and iPhones.)
 
 ## Options
 
