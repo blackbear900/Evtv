@@ -25,3 +25,5 @@ computer, so `http://` channels play on secure `https://` pages.
 
 - **tailscale_funnel**: share NodeCast at a free public `https://` address (on by default).
 - **tailscale_name**: the first word of that address (default `evtv`).
+- **group_order**: the channel groups to show first, in your order, one per line. A word from the name is
+  enough (for example `Entertainment`, `MILB`, `Golf`). Groups you don't list follow, A to Z.

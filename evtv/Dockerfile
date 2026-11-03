@@ -4,7 +4,9 @@ FROM ghcr.io/technomancer702/nodecast-tv:2.2.1
 
 COPY --from=tailscale /usr/local/bin/tailscale /usr/local/bin/tailscaled /usr/local/bin/
 COPY run.sh /run.sh
-RUN chmod +x /run.sh
+COPY evtv-groups.js /app/public/js/evtv-groups.js
+COPY patch-group-order.js /tmp/patch-group-order.js
+RUN chmod +x /run.sh && node /tmp/patch-group-order.js && rm /tmp/patch-group-order.js
 
 # Home Assistant only shows the add-on as "started" once Docker reports a health status, and
 # HEALTHCHECK NONE never reports one (it stays "starting" forever), so a real check is needed.

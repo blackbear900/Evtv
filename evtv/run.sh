@@ -11,6 +11,10 @@ if [ ! -L /app/data ]; then
   ln -s /data/nodecast /app/data
 fi
 
+# Hand the group order typed in the add-on's options to the channel list (see evtv-groups.js)
+node -e "const o=(require('/data/options.json').group_order||[]).map(s=>String(s).trim().toLowerCase()).filter(Boolean);
+require('fs').writeFileSync('/app/public/js/evtv-group-order.js','window.EVTV_GROUP_ORDER = '+JSON.stringify(o)+';\\n')"
+
 if [ "$(opt tailscale_funnel)" = "true" ]; then
   name="$(opt tailscale_name)"
   tailscaled --tun=userspace-networking --state=/data/tailscale/tailscaled.state \

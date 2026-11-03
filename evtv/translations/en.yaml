@@ -1,0 +1,10 @@
+configuration:
+  tailscale_funnel:
+    name: Tesla address (Tailscale Funnel)
+    description: Share EV TV at a free public https:// address.
+  tailscale_name:
+    name: Address name
+    description: The first word of the https:// address.
+  group_order:
+    name: Group order
+    description: Channel groups to show first, in your order. A word from the group's name is enough (for example Entertainment). Groups not listed follow, A to Z.
