@@ -1,5 +1,5 @@
 name: EV TV
-version: "2.2.1-1"
+version: "2.2.1-2"
 slug: evtv
 description: IPTV player for your EV's web browser (built on NodeCast TV), with a free private Tailscale address
 url: https://github.com/technomancer702/nodecast-tv

@@ -6,6 +6,10 @@ COPY --from=tailscale /usr/local/bin/tailscale /usr/local/bin/tailscaled /usr/lo
 COPY run.sh /run.sh
 RUN chmod +x /run.sh
 
-# Home Assistant checks the add-on itself; the image's own check would mark it unhealthy while starting
-HEALTHCHECK NONE
+# Home Assistant only shows the add-on as "started" once Docker reports a health status, and
+# HEALTHCHECK NONE never reports one (it stays "starting" forever), so a real check is needed.
+# It checks that NodeCast (PID 1, via run.sh's exec) is alive instead of asking it over HTTP: an EPG sync
+# blocks NodeCast for minutes, an HTTP check would fail then, and the watchdog would restart it mid-sync.
+HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
+  CMD kill -0 1 || exit 1
 CMD ["/run.sh"]
